@@ -1,0 +1,34 @@
+{
+  "name": "quick-bite",
+  "version": "1.0.0",
+  "description": "This is my First Project - Quick-Bite",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kritysingh630/Quick-Bite.git"
+  },
+  "keywords": [
+    "Food",
+    "Restaurants"
+  ],
+  "author": "Krity Kumari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kritysingh630/Quick-Bite/issues"
+  },
+  "homepage": "https://github.com/kritysingh630/Quick-Bite#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "browsersList":[
+    "last 2 versions"
+  ]
+}
