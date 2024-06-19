@@ -1,8 +1,11 @@
-# npm init - creates a package.json file for a Node.js project, defining project details, dependencies, and scripts, ensuring standardized configuration and easy dependency management.
+# npm init 
+- creates a package.json file for a Node.js project, defining project details, dependencies, and scripts, ensuring standardized configuration and easy dependency management.
 
-# npm install -D parcel - installing parcel bundler 
+# npm install -D parcel 
+- installing parcel bundler 
 
-# npx parcel index.html - This will host our website on a local server which will be done by parcel.
+# npx parcel index.html 
+- This will host our website on a local server which will be done by parcel.
 
 # npm i react 
 
