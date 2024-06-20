@@ -28,3 +28,6 @@
 - HTTP - Facilitates communication between clients and servers using the Hypertext Transfer Protocol.
 - Tree Shaking - removes unused codes
 - different dev and prod bundles - Automatically adjusts bundles for development (with source maps, faster builds) and production (minification, optimization for performance).
+
+# JSX 
+- takes care of the Cross-Site Scripting - malicious Scripts
