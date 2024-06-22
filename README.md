@@ -34,3 +34,11 @@
 
 # keys
 - Unique Keys >>>> Index as keys >>>> Not using keys (not acceptable)
+
+# Exports
+- Two types of exports
+    - Default export 
+    - Named export
+- Two types of imports
+    - Default import 
+    - Named import
