@@ -31,3 +31,6 @@
 
 # JSX 
 - takes care of the Cross-Site Scripting - malicious Scripts
+
+# keys
+- Unique Keys >>>> Index as keys >>>> Not using keys (not acceptable)
