@@ -42,3 +42,11 @@
     flex-wrap: wrap;
     padding: 5px;
 }
+
+.Search-Filter{
+    display: flex;
+}
+.filter{
+    padding: 5px;
+    margin: 5px;
+}
