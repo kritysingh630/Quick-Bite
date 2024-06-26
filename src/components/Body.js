@@ -1,9 +1,21 @@
 import RestaurantCard from "./RestaurantCard";
 import { resList } from "../utils/MockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
   const [listofRes,setlistofRes] = useState(resList)
+
+  useEffect(()=>{
+    fetchData();
+  },[])
+
+  const fetchData = async()=>{
+    const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=12.9352403&lng=77.624532")
+    const json = await data.json()
+    console.log(json)
+    setlistofRes(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
+  }
+
   return (
     <div className="body">
       <div className="Search-Filter">
