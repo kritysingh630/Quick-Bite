@@ -65,3 +65,6 @@
 
 # Microservices
 - Microservices is an architectural style that structures an application as a collection of small, independent, and loosely coupled services. Each service focuses on a specific business function, can be developed, deployed, and scaled independently, and typically communicates with other services through APIs.
+
+# why do we always have to use super in the class based component to access props 
+- In React class components, `super(props)` in the constructor initializes the component properly, allowing you to access `this.props` throughout the class methods. It's necessary because `this.props` directly refers to the props passed to the component instance, and `super(props)` ensures these props are correctly initialized before any other operations within the component. This setup maintains consistency and clarity in how props are accessed and used within class-based components in React.
