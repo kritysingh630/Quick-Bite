@@ -68,3 +68,48 @@
 
 # why do we always have to use super in the class based component to access props 
 - In React class components, `super(props)` in the constructor initializes the component properly, allowing you to access `this.props` throughout the class methods. It's necessary because `this.props` directly refers to the props passed to the component instance, and `super(props)` ensures these props are correctly initialized before any other operations within the component. This setup maintains consistency and clarity in how props are accessed and used within class-based components in React.
+
+# what is react component lifecycle method?
+- The React component lifecycle refers to the sequence of stages a React component goes through from birth (initialization) to death (removal from the DOM). Here's a concise summary of the lifecycle methods:
+
+1. **Mounting**:
+   - `constructor()`: Initializes state and binds event handlers.
+   - `static getDerivedStateFromProps()`: Prepares the initial state derived from props (rarely used).
+   - `render()`: Returns React elements to be rendered.
+   - `componentDidMount()`: Executes after the component is rendered to the DOM, useful for initialization (e.g., API calls).
+
+2. **Updating**:
+   - `static getDerivedStateFromProps()`: Updates state based on props changes.
+   - `shouldComponentUpdate()`: Controls if the component should re-render.
+   - `render()`: Re-renders the component.
+   - `getSnapshotBeforeUpdate()`: Captures current DOM state before changes (e.g., scrolling position).
+   - `componentDidUpdate()`: Executes after component updates, for side effects (e.g., network requests).
+
+3. **Unmounting**:
+   - `componentWillUnmount()`: Executes just before the component is removed from the DOM, useful for cleanup (e.g., canceling timers).
+
+4. **Error Handling**:
+   - `static getDerivedStateFromError()`: Updates state when a child component throws an error.
+   - `componentDidCatch()`: Handles errors during rendering, useful for displaying fallback UI.
+
+These methods allow developers to manage state, respond to props changes, perform side effects, and handle errors effectively throughout the lifecycle of a React component.
+
+# React Lifecycle Diagram Link for in-depth understanding of it
+- https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/ 
+- DOM manipulation or updating the DOM is an expensive tasks that's why react batches the render or batchthe componentdidmount together to speed up or optimize the process.
+
+- parent constructor
+- parent render
+   - first child constructor
+   - first child render
+
+   - second child constructor
+   - second child render
+
+   - DOM is updated in SINGLE BATCH
+   - first child componentDidMount
+   - second child componentDidMount
+- parent componentDidMount
+
+- Render phase of all child batched together 
+- Commit phase of all child batched together
