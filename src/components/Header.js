@@ -19,7 +19,7 @@ const Header = () => {
           <li><Link className="style" to="/">Home</Link></li>
           <li><Link className="style" to="/about">About Us</Link></li>
           <li><Link className="style" to="/contact">Contact Us</Link></li>
-          <li>My cart</li>
+          <li><Link className="style" to="/grocery">Grocery</Link></li>
           <button
             className="login"
             onClick={() => {
