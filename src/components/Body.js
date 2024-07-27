@@ -5,38 +5,51 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [listofRes, setlistofRes] = useState([]);
-  const [filteredsearch, setFilteredSearch] = useState([]);
-  const [search, setSearch] = useState([]);
+  const [listofRes, setListOfRes] = useState([]);
+  const [filteredSearch, setFilteredSearch] = useState([]);
+  const [search, setSearch] = useState("");
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
-
-  console.log("Body rendered", listofRes);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9352403&lng=77.624532"
-    );
-    const json = await data.json();
-    console.log(json);
-    setlistofRes(
-      json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilteredSearch(
-      json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    try {
+      const data = await fetch(
+        "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9352403&lng=77.624532"
+      );
+      const json = await data.json();
+      console.log(json);
+      const restaurants = json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants || [];
+      setListOfRes(restaurants);
+      setFilteredSearch(restaurants);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false)
     return <h1>Looks Like You're Offline! Please Check Your Connection.</h1>;
+
+  const handleSearch = () => {
+    const filteredsearch = listofRes.filter((res) =>
+      res.info.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredSearch(filteredsearch);
+  };
+
+  const handleTopRated = () => {
+    const filteredList = listofRes.filter(
+      (res) => res.info.avgRating > 4.2
+    );
+    console.log("Filtered Top Rated Restaurants:", filteredList);
+    setFilteredSearch(filteredList);
+  };
 
   return listofRes.length === 0 ? (
     <Shimmer />
@@ -49,15 +62,10 @@ const Body = () => {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-          ></input>
+          />
           <button
             className="px-1 m-2 bg-green-200 rounded-md"
-            onClick={() => {
-              const filteredsearch = listofRes.filter((res) =>
-                res.info.name.toLowerCase().includes(search.toLowerCase())
-              );
-              setFilteredSearch(filteredsearch);
-            }}
+            onClick={handleSearch}
           >
             Search
           </button>
@@ -65,31 +73,30 @@ const Body = () => {
         <div className="px-1 my-2 flex items-center">
           <button
             className="px-4 bg-gray-200 rounded-md"
-            onClick={() => {
-              const filteredList = listofRes.filter(
-                (res) => res.info.avgRating > 4.5
-              );
-              setlistofRes(filteredList);
-            }}
+            onClick={handleTopRated}
           >
             Top Rated Restaurants
           </button>
         </div>
       </div>
       <div className="flex flex-wrap">
-        {filteredsearch.map((restaurant) => (
-          <Link
-            className="style"
-            key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.info.id}
-          >
-            {restaurant.info.promoted ? (
-              <RestaurantCardPromoted resData={restaurant} />
-            ) : (
-              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-            )}
-          </Link>
-        ))}
+        {filteredSearch.length > 0 ? (
+          filteredSearch.map((restaurant) => (
+            <Link
+              className="style"
+              key={restaurant.info.id}
+              to={"/restaurants/" + restaurant.info.id}
+            >
+              {restaurant.info.promoted ? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+              )}
+            </Link>
+          ))
+        ) : (
+          <p>No restaurants found</p>
+        )}
       </div>
     </div>
   );
