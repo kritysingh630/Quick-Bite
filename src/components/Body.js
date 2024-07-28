@@ -1,8 +1,9 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Shimmer } from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listofRes, setListOfRes] = useState([]);
@@ -22,8 +23,9 @@ const Body = () => {
       );
       const json = await data.json();
       console.log(json);
-      const restaurants = json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants || [];
+      const restaurants =
+        json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+          ?.restaurants || [];
       setListOfRes(restaurants);
       setFilteredSearch(restaurants);
     } catch (error) {
@@ -44,12 +46,12 @@ const Body = () => {
   };
 
   const handleTopRated = () => {
-    const filteredList = listofRes.filter(
-      (res) => res.info.avgRating > 4.2
-    );
+    const filteredList = listofRes.filter((res) => res.info.avgRating > 4.2);
     console.log("Filtered Top Rated Restaurants:", filteredList);
     setFilteredSearch(filteredList);
   };
+
+  const {loggedInUser, setuserName } = useContext(UserContext);
 
   return listofRes.length === 0 ? (
     <Shimmer />
@@ -70,13 +72,21 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="px-1 my-2 flex items-center">
+        <div className="px-1 my-2 mx-6 flex items-center">
           <button
             className="px-4 bg-gray-200 rounded-md"
             onClick={handleTopRated}
           >
             Top Rated Restaurants
           </button>
+        </div>
+        <div className="px-1 my-2 mx-2 flex items-center">
+          <label>Username : </label>
+          <input
+            className="border border-black mx-2"
+            value={loggedInUser}
+            onChange={(e) => setuserName(e.target.value)}
+          ></input>
         </div>
       </div>
       <div className="flex flex-wrap">
