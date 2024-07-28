@@ -23,7 +23,7 @@ const ResMenu = () => {
         {cuisines?.join(", ")} - {costForTwoMessage}
       </p>
       {categories.map((category, index) => (
-        <ResCategory key={index} data={category?.card?.card} />
+        <ResCategory key={category?.card?.card?.title} data={category?.card?.card} />
       ))}
     </div>
   );
