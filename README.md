@@ -156,3 +156,34 @@ The component does not re-render on input changes.
 
    - Controlled Components: Preferred for real-time validation, instant feedback, or keeping form data in sync with the component state.
    - Uncontrolled Components: Preferred for simpler forms or when performance is a concern and handling every input change is unnecessary.
+
+# Props Drilling in React
+- Definition:
+Props drilling is the process of passing data from a parent component to deeply nested child components through multiple intermediary components.
+
+- Problems:
+
+Verbose Code: Intermediate components receive and pass unnecessary props.
+Management Difficulty: Tracing and managing data flow becomes hard.
+Scalability Issues: More complex as the component tree grows.
+
+- Solutions:
+
+Context API: Share data across components without passing props manually.
+State Management Libraries: Use Redux or MobX for global state management.
+
+
+# Context in React
+- Definition:
+Context provides a way to share values between components without having to explicitly pass props through every level of the tree.
+
+- Benefits:
+
+Avoids props drilling.
+Makes global data easily accessible.
+Simplifies component structure and data flow.
+
+- Drawbacks:
+
+Can make components less reusable.
+Overuse can lead to tightly coupled components.
