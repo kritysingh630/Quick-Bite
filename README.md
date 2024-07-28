@@ -123,3 +123,36 @@ These methods allow developers to manage state, respond to props changes, perfor
 - Higher-Order Component (HOC)
 - Definition: An HOC is a function that takes a component and returns a new component with additional functionality.
 - Purpose: HOCs are used to share common logic between components without duplicating code.
+
+# Controlled vs. Uncontrolled Components in React
+- Controlled Components:
+
+- Definition: A component where form input values are controlled by the component's state.
+- Characteristics:
+The input's value is bound to the component's state.
+Any change in the input triggers an onChange event handler, updating the state.
+The state is the single source of truth for the input value.
+ 
+- Uncontrolled Components:
+
+- Definition: A component where form input values are managed by the DOM itself, rather than by the component's state.
+- Characteristics:
+The input's value is managed by the DOM.
+A ref is used to access the input's current value.
+The component does not re-render on input changes.
+
+# Key Differences:
+- State Management:
+
+   - Controlled Components: The state is the source of truth. The input's value is always synced with the component's state.
+   - Uncontrolled Components: The input's value is managed by the DOM. Refs are used to access the value when necessary.
+
+- Re-rendering:
+
+   - Controlled Components: The component re-renders on every input change as the state updates.
+   - Uncontrolled Components: The component does not re-render on input changes. The input's value is accessed only when needed.
+
+- Use Case:
+
+   - Controlled Components: Preferred for real-time validation, instant feedback, or keeping form data in sync with the component state.
+   - Uncontrolled Components: Preferred for simpler forms or when performance is a concern and handling every input change is unnecessary.
