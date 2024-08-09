@@ -187,3 +187,26 @@ Simplifies component structure and data flow.
 
 Can make components less reusable.
 Overuse can lead to tightly coupled components.
+
+
+# UserContext.Consumer 
+- takes a callback function
+
+# Redux is not Mandatory 
+- Redux is used for managing state 
+- Applicatins become easier to debugg 
+- Use Redux only when there is a large scale application where there is a lot of data and lots of components .It can also be build without using Redux too.
+- React and Redux are different libraries which we install in out project then we use Redux capabilities
+
+# Redux 
+- Definition : Redux is a state management library for JavaScript applications, commonly used with React. It centralizes the application's state and logic, making it easier to manage and debug complex applications by enforcing a unidirectional data flow. 
+
+- In Redux, a slice is a way to manage a portion of your application's state, along with the reducers and actions that interact with that state. It typically groups related state logic together, making it easier to manage and scale your Redux store.
+
+# Redux install
+- install @reduxjs/toolkit and react-redux
+- Build our own Store
+- Connect our store to our App
+- Create a Cart Slice 
+- Dispatch action
+- read the data using Selector

@@ -40,6 +40,11 @@ const Header = () => {
               Grocery
             </Link>
           </li>
+          <li className="px-4">
+            <Link className="style" to="/cart">
+              Cart
+            </Link>
+          </li>
           <button
             className="px-4"
             onClick={() => {
