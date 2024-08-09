@@ -18,14 +18,19 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetch(
+      const response = await fetch(
         "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9352403&lng=77.624532"
       );
-      const json = await data.json();
-      console.log(json);
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const json = await response.json();
       const restaurants =
         json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants || [];
+
       setListOfRes(restaurants);
       setFilteredSearch(restaurants);
     } catch (error) {
@@ -35,8 +40,9 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  if (onlineStatus === false)
+  if (!onlineStatus) {
     return <h1>Looks Like You're Offline! Please Check Your Connection.</h1>;
+  }
 
   const handleSearch = () => {
     const filteredsearch = listofRes.filter((res) =>
@@ -47,11 +53,10 @@ const Body = () => {
 
   const handleTopRated = () => {
     const filteredList = listofRes.filter((res) => res.info.avgRating > 4.2);
-    console.log("Filtered Top Rated Restaurants:", filteredList);
     setFilteredSearch(filteredList);
   };
 
-  const {loggedInUser, setuserName } = useContext(UserContext);
+  const { loggedInUser, setuserName } = useContext(UserContext);
 
   return listofRes.length === 0 ? (
     <Shimmer />
@@ -64,6 +69,7 @@ const Body = () => {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search for restaurants"
           />
           <button
             className="px-1 m-2 bg-green-200 rounded-md"
