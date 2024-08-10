@@ -209,4 +209,5 @@ Overuse can lead to tightly coupled components.
 - Connect our store to our App
 - Create a Cart Slice 
 - Dispatch action
+- Subscribe to our store using Selector
 - read the data using Selector
