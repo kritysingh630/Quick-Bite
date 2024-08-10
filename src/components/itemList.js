@@ -3,10 +3,10 @@ import { addItem } from "../utils/CartSlice";
 import { CDN_URL } from "../utils/constants";
 
 const ItemList = ({ items }) => {
-  const disptach=useDispatch();
-  const handleAddItem = ()=>{
-    disptach(addItem("pizza")) //whatever I sent inside dispatch it creates an object and it is passed as an action.payload to addItem in cartSLice 
-  }
+  const disptach = useDispatch();
+  const handleAddItem = (item) => {
+    disptach(addItem(item)); //whatever I sent inside dispatch it creates an object and it is passed as an action.payload to addItem in cartSLice
+  };
   return (
     <div>
       {items.map((item) => (
@@ -28,13 +28,16 @@ const ItemList = ({ items }) => {
           </div>
           <div className="w-4/12 p-4">
             <div className="absolute">
-                <button className="p-1 rounded-lg bg-black text-white shadow-lg"
-                onClick={handleAddItem}>
-                  Add +
-                  </button>
+              <button
+                className="p-1 rounded-lg bg-black text-white shadow-lg"
+                onClick={() => handleAddItem(item)}
+              >
+                Add +
+              </button>
             </div>
             <img
-              src={CDN_URL + item.card.info.imageId} className="w-full"
+              src={CDN_URL + item.card.info.imageId}
+              className="w-full"
             ></img>
           </div>
         </div>
