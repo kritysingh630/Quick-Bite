@@ -211,3 +211,12 @@ Overuse can lead to tightly coupled components.
 - Dispatch action
 - Subscribe to our store using Selector
 - read the data using Selector
+
+
+
+# Problems with vanilla(older) Redux
+- In Vanilla Redux, to update the state, you must create a copy of the existing state with the necessary changes. For example, if you're updating a nested object, you'd need to manually copy each level of the state, apply the changes, and return the new state, ensuring the original state remains unchanged.
+
+- In the new version of Redux , Redux still does all that creating of the new state and copying each level of the state to the new state and finally returning the state .But it is all going on in the background and developers don't need to do it ,Redux is doing that for them .
+
+- Redux uses IMMER library to do all this which finds the difference between the two states and gives you the diff of that state and updates the state automagically. IMMER is a tiny package that allows you to work with immutable state in a more convinient way.

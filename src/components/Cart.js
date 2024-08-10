@@ -3,7 +3,7 @@ import ItemList from "./itemList";
 import { clearCart } from "../utils/CartSlice";
 
 const Cart = () => {
-  const cartItems = useSelector((store) => store.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);  //only subscribe to a specific portion of the store and not the whole store
   console.log(cartItems);
 
   const dispatch = useDispatch();
