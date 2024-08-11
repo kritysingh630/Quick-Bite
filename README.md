@@ -242,4 +242,10 @@ Overuse can lead to tightly coupled components.
 - Installed Babel Dependencies
 - Configure Babel
 - Configure Parcel Config file to disable default Babel Transpilation
+- Writing Jest Configuration => npx jest --init
+- Install jsdom library
 
+# Tests :
+ - _ _test_ _ => 2 underscores at the front and in the back is called Dunder Test
+ - To test a component first we create a sub file componentName.test.js and then we write test ()which takes two arguments 1st - String , 2nd - a callback function
+ - String contains the description of the function
