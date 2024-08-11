@@ -235,3 +235,11 @@ Overuse can lead to tightly coupled components.
 
 # End to End Testing (E2E) :
 - End-to-end testing checks if the whole application works correctly by simulating real user actions, from start to finish. It ensures that all parts of the system, from the front end to the back end, work together smoothly.
+
+# Setting up testing in our App :
+- Installed React Testing Library
+- Installed Jest
+- Installed Babel Dependencies
+- Configure Babel
+- Configure Parcel Config file to disable default Babel Transpilation
+
