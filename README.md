@@ -220,3 +220,18 @@ Overuse can lead to tightly coupled components.
 - In the new version of Redux , Redux still does all that creating of the new state and copying each level of the state to the new state and finally returning the state .But it is all going on in the background and developers don't need to do it ,Redux is doing that for them .
 
 - Redux uses IMMER library to do all this which finds the difference between the two states and gives you the diff of that state and updates the state automagically. IMMER is a tiny package that allows you to work with immutable state in a more convinient way.
+
+# Types of Testing (Developer) :
+
+- Unit Testing 
+- Integration Testing
+- End to End Testing - e2e testing
+
+# Unit Testing :
+- Unit testing is the process of testing individual components or functions of a software application in isolation to ensure they work correctly. Typically done by developers, it involves writing test cases for each unit of code, like functions or methods, to verify that they produce the expected output given specific inputs. Unit tests help catch bugs early in development and make the code more reliable and easier to maintain.
+
+# Integration Testing :
+- Integration testing is the process of testing the interaction between multiple components or modules of a software application to ensure they work together as expected. It comes after unit testing and focuses on identifying issues that occur when combining different parts of the system, such as data flow, communication between modules, and interface mismatches. Integration testing helps ensure that the integrated components function correctly as a group.
+
+# End to End Testing (E2E) :
+- End-to-end testing checks if the whole application works correctly by simulating real user actions, from start to finish. It ensures that all parts of the system, from the front end to the back end, work together smoothly.

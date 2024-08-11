@@ -21,7 +21,7 @@ class About extends React.Component {
         <h2>This is a food ordering App</h2>
         {/* <User name={"Krity Kumari (function)"}/> */}
         <UserClass
-          name={"Krity Kumari "}
+          name={" Krity Kumari "}
           location={"Odisha"}
           contact={"+91-123-4567-890"}
         />
