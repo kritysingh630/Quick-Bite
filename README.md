@@ -244,6 +244,9 @@ Overuse can lead to tightly coupled components.
 - Configure Parcel Config file to disable default Babel Transpilation
 - Writing Jest Configuration => npx jest --init
 - Install jsdom library
+- Install @babel/preset-react library to make jsx work in test cases
+- Install @babel/preset-react inside my babel config
+- Install @testing-library/jest-dom
 
 # Tests :
  - _ _test_ _ => 2 underscores at the front and in the back is called Dunder Test
